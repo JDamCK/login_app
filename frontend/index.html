@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="authSection">
+            <div class="tabs">
+                <button class="tab active" id="tabLogin">Iniciar Sesión</button>
+                <button class="tab" id="tabRegister">Registrarse</button>
+            </div>
+
+            <form id="loginForm" class="form active">
+                <h2>Bienvenido</h2>
+                <div class="input-group">
+                    <label>Usuario</label>
+                    <input type="text" id="loginUsername" required placeholder="Tu usuario">
+                </div>
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+                <p id="loginMessage" class="message"></p>
+            </form>
+
+            <form id="registerForm" class="form">
+                <h2>Crear Cuenta</h2>
+                <div class="input-group">
+                    <label>Usuario</label>
+                    <input type="text" id="regUsername" required placeholder="Elige un usuario">
+                </div>
+                <div class="input-group">
+                    <label>Email (opcional)</label>
+                    <input type="email" id="regEmail" placeholder="tu@email.com">
+                </div>
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="regPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn">Registrarse</button>
+                <p id="regMessage" class="message"></p>
+            </form>
+        </div>
+
+        <div id="dashboardSection" class="hidden">
+            <div class="dashboard">
+                <h2>Dashboard</h2>
+                <p>Bienvenido, <strong id="dashUsername"></strong></p>
+                <p>Email: <span id="dashEmail"></span></p>
+                <p>Miembro desde: <span id="dashCreated"></span></p>
+                <button id="logoutBtn" class="btn logout">Cerrar Sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const API_URL = 'https://login-app-3srd.onrender.com';
+const API_URL = 'https://backend-ixcn.onrender.com';
 const API = API_URL + '/api/auth';
 
 document.addEventListener('DOMContentLoaded', () => {

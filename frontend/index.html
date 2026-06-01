@@ -3,57 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login App</title>
+    <title>Acceso Seguro | Premium App</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background Animated Blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
     <div class="container">
         <div id="authSection">
-            <div class="tabs">
-                <button class="tab active" id="tabLogin">Iniciar Sesión</button>
-                <button class="tab" id="tabRegister">Registrarse</button>
+            <div class="brand">
+                <div class="logo-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h1>Portal de Acceso</h1>
+                <p>Ingresa al sistema de forma segura</p>
             </div>
 
+            <div class="tabs">
+                <button class="tab active" id="tabLogin">
+                    <i class="fa-solid fa-lock-open tab-icon"></i>Iniciar Sesión
+                </button>
+                <button class="tab" id="tabRegister">
+                    <i class="fa-solid fa-user-plus tab-icon"></i>Registrarse
+                </button>
+            </div>
+
+            <!-- Formulario de Login -->
             <form id="loginForm" class="form active">
-                <h2>Bienvenido</h2>
                 <div class="input-group">
-                    <label>Usuario</label>
-                    <input type="text" id="loginUsername" required placeholder="Tu usuario">
+                    <label for="loginUsername">Usuario</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user input-icon"></i>
+                        <input type="text" id="loginUsername" required placeholder="Tu usuario">
+                    </div>
                 </div>
                 <div class="input-group">
-                    <label>Contraseña</label>
-                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                    <label for="loginPassword">Contraseña</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-key input-icon"></i>
+                        <input type="password" id="loginPassword" required placeholder="••••••••">
+                        <i class="fa-solid fa-eye toggle-password" id="toggleLoginPassword"></i>
+                    </div>
                 </div>
-                <button type="submit" class="btn">Entrar</button>
-                <p id="loginMessage" class="message"></p>
+                <button type="submit" class="btn">
+                    <span>Entrar</span> <i class="fa-solid fa-arrow-right-to-bracket btn-icon"></i>
+                </button>
+                <div id="loginMessage" class="message"></div>
             </form>
 
+            <!-- Formulario de Registro -->
             <form id="registerForm" class="form">
-                <h2>Crear Cuenta</h2>
                 <div class="input-group">
-                    <label>Usuario</label>
-                    <input type="text" id="regUsername" required placeholder="Elige un usuario">
+                    <label for="regUsername">Usuario</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user input-icon"></i>
+                        <input type="text" id="regUsername" required placeholder="Elige un usuario">
+                    </div>
                 </div>
                 <div class="input-group">
-                    <label>Email (opcional)</label>
-                    <input type="email" id="regEmail" placeholder="tu@email.com">
+                    <label for="regEmail">Email (opcional)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" id="regEmail" placeholder="tu@email.com">
+                    </div>
                 </div>
                 <div class="input-group">
-                    <label>Contraseña</label>
-                    <input type="password" id="regPassword" required placeholder="••••••••">
+                    <label for="regPassword">Contraseña</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-key input-icon"></i>
+                        <input type="password" id="regPassword" required placeholder="••••••••">
+                        <i class="fa-solid fa-eye toggle-password" id="toggleRegPassword"></i>
+                    </div>
                 </div>
-                <button type="submit" class="btn">Registrarse</button>
-                <p id="regMessage" class="message"></p>
+                <button type="submit" class="btn">
+                    <span>Registrarse</span> <i class="fa-solid fa-user-plus btn-icon"></i>
+                </button>
+                <div id="regMessage" class="message"></div>
             </form>
         </div>
 
+        <!-- Sección de Dashboard -->
         <div id="dashboardSection" class="hidden">
             <div class="dashboard">
-                <h2>Dashboard</h2>
-                <p>Bienvenido, <strong id="dashUsername"></strong></p>
-                <p>Email: <span id="dashEmail"></span></p>
-                <p>Miembro desde: <span id="dashCreated"></span></p>
-                <button id="logoutBtn" class="btn logout">Cerrar Sesión</button>
+                <div class="profile-header">
+                    <div class="avatar" id="avatarContainer">
+                        <span id="avatarInitials">U</span>
+                    </div>
+                    <h2>¡Bienvenido, <span id="dashWelcomeName">Usuario</span>!</h2>
+                    <p class="subtitle">Sesión activa correctamente</p>
+                </div>
+                
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                        <div class="card-content">
+                            <span class="card-label">Usuario</span>
+                            <span class="card-value" id="dashUsername">Cargando...</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="card-content">
+                            <span class="card-label">Email</span>
+                            <span class="card-value" id="dashEmail">Cargando...</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                        <div class="card-content">
+                            <span class="card-label">Miembro desde</span>
+                            <span class="card-value" id="dashCreated">Cargando...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="logoutBtn" class="btn logout">
+                    <span>Cerrar Sesión</span> <i class="fa-solid fa-right-from-bracket btn-icon"></i>
+                </button>
             </div>
         </div>
     </div>
